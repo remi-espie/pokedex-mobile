@@ -10,9 +10,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import fr.dopolytech.mobidex.ui.component.MyViewModel
+import fr.dopolytech.mobidex.ui.component.Screen
 import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel = MyViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -22,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Text(text = "Mobidex: a mobile Pokedex")
+                    Screen(viewModel = viewModel)
                 }
             }
         }
