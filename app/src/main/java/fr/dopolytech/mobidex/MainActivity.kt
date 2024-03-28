@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import fr.dopolytech.mobidex.ui.component.MyViewModel
+import fr.dopolytech.mobidex.ui.MyViewModel
 import fr.dopolytech.mobidex.ui.component.Screen
 import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 

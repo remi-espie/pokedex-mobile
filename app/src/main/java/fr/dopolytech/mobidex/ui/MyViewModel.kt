@@ -1,4 +1,4 @@
-package fr.dopolytech.mobidex.ui.component
+package fr.dopolytech.mobidex.ui
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

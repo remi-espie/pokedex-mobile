@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import fr.dopolytech.mobidex.ui.MyViewModel
 import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 
 @Composable

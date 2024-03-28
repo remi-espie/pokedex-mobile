@@ -1,4 +1,4 @@
-package fr.dopolytech.mobidex.ui.component
+package fr.dopolytech.mobidex.ui
 
 
 data class UiState(
