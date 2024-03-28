@@ -24,25 +24,17 @@ import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 fun Screen(viewModel: MyViewModel) {
     val uiState by viewModel.uiState.collectAsState()
 
-    MobidexTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            Column {
-                Text(text = "Pokemon count:" + uiState.pokemonList.count.toString())
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    verticalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
-                        items(uiState.pokemonList.results) { pokemon ->
-                            ListedPokemonCard(pokemon = pokemon)
-                        }
+    Column {
+        Text(text = "Pokemon count:" + uiState.pokemonList.count.toString())
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                items(uiState.pokemonList.results) { pokemon ->
+                    ListedPokemonCard(pokemon = pokemon)
                 }
-            }
         }
     }
 }
