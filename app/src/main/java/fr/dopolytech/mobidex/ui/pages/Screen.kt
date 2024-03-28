@@ -1,5 +1,6 @@
 package fr.dopolytech.mobidex.ui.pages
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import fr.dopolytech.mobidex.ui.MyViewModel
+import fr.dopolytech.mobidex.ui.components.ListedPokemonCard
 import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 
 @Composable
@@ -33,12 +35,12 @@ fun Screen(viewModel: MyViewModel) {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
-                    items(uiState.pokemonList.results) { pokemon ->
-                        Box {
-                            Text(text = pokemon.name)
+                        items(uiState.pokemonList.results) { pokemon ->
+                            ListedPokemonCard(pokemon = pokemon)
                         }
-                    }
                 }
             }
         }
