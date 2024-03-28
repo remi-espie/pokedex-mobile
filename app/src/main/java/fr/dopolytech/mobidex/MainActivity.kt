@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import fr.dopolytech.mobidex.ui.MyViewModel
-import fr.dopolytech.mobidex.ui.component.Screen
+import fr.dopolytech.mobidex.ui.pages.Screen
 import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 
 class MainActivity : ComponentActivity() {
