@@ -2,9 +2,14 @@ package fr.dopolytech.mobidex.type
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Serializable
+@Entity(tableName = "pokemon")
 data class Pokemon(
+    @PrimaryKey
+    var id: Int = 0,
     var abilities: List<Ability> = listOf(),
     @SerialName("base_experience")
     var baseExperience: Int = 0,
@@ -14,7 +19,6 @@ data class Pokemon(
     var height: Int = 0,
     @SerialName("held_items")
     var heldItems: List<HeldItem> = listOf(),
-    var id: Int = 0,
     @SerialName("is_default")
     var isDefault: Boolean = false,
     @SerialName("location_area_encounters")
