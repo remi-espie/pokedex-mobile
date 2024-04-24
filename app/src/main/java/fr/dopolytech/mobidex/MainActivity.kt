@@ -18,11 +18,12 @@ import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel = MyViewModel()
     lateinit var container: AppContainer
+    lateinit var viewModel : MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         container = AppDataContainer(this)
+        viewModel = MyViewModel(container.pokemonRepository)
         setContent {
             MobidexTheme {
                 // A surface container using the 'background' color from the theme
