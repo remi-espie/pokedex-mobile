@@ -19,7 +19,7 @@ import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 class MainActivity : ComponentActivity() {
 
     lateinit var container: AppContainer
-    lateinit var viewModel : MyViewModel
+    lateinit var viewModel: MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         container = AppDataContainer(this)

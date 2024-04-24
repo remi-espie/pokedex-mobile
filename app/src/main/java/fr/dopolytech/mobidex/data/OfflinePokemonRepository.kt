@@ -2,7 +2,7 @@ package fr.dopolytech.mobidex.data
 
 import fr.dopolytech.mobidex.type.Pokemon
 
-class OfflinePokemonRepository(private val pokemonDao: PokemonDao): PokemonRepository {
+class OfflinePokemonRepository(private val pokemonDao: PokemonDao) : PokemonRepository {
     override fun getAllPokemonsStream() = pokemonDao.getAllPokemons()
 
     override fun getPokemonStream(id: Int) = pokemonDao.getPokemon(id)

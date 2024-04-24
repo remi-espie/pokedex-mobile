@@ -2,6 +2,7 @@ package fr.dopolytech.mobidex.data
 
 import fr.dopolytech.mobidex.type.Pokemon
 import kotlinx.coroutines.flow.Flow
+
 interface PokemonRepository {
     /**
      * Retrieve all the pokemons from the given data source.

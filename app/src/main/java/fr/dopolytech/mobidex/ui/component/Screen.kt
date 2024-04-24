@@ -35,7 +35,7 @@ fun Screen(viewModel: MyViewModel) {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
-                    ) {
+                ) {
                     items(uiState.pokemonList.results) { pokemon ->
                         Box {
                             Text(text = pokemon.name)
