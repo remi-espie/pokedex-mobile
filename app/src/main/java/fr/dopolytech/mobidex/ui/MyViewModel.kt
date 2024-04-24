@@ -28,7 +28,6 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
                 for (pokemon in response.results) {
                     getPokemon(pokemon.url)
                 }
-                println(response)
                 _uiState.value = UiState(pokemonList = response)
             } catch (e: Exception) {
                 e.printStackTrace()
