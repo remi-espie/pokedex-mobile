@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import fr.dopolytech.mobidex.data.AppContainer
 import fr.dopolytech.mobidex.data.AppDataContainer
 import fr.dopolytech.mobidex.ui.MyViewModel
-import fr.dopolytech.mobidex.ui.component.Screen
+import fr.dopolytech.mobidex.ui.pages.Screen
 import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 
 class MainActivity : ComponentActivity() {
