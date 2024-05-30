@@ -10,8 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
 import fr.dopolytech.mobidex.data.AppContainer
 import fr.dopolytech.mobidex.data.AppDataContainer
+import fr.dopolytech.mobidex.navigator.navHost
 import fr.dopolytech.mobidex.ui.MyViewModel
 import fr.dopolytech.mobidex.ui.pages.Screen
 import fr.dopolytech.mobidex.ui.theme.MobidexTheme
@@ -31,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Screen(viewModel = viewModel)
+                    navHost(viewModel)
                 }
             }
         }
