@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mobidex</string>
+    <string name="detail_page">Details</string>
+    <string name="back_button">Retour</string>
 </resources>
