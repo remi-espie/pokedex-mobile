@@ -39,5 +39,5 @@ fun Screen(viewModel: MyViewModel, navController: NavHostController) {
                     }
                 }
         }
-  }
+    }
 }
