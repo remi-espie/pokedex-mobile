@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import fr.dopolytech.mobidex.data.PokemonRepository
 import fr.dopolytech.mobidex.network.ApiRepository
+import fr.dopolytech.mobidex.type.Pokemon
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,6 +13,9 @@ import kotlinx.coroutines.launch
 class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel() {
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+
+    private val _pokemon = MutableStateFlow<Pokemon?>(null)
+    val pokemon: StateFlow<Pokemon?> = _pokemon.asStateFlow()
 
     fun updateText(text: String) {
         _uiState.value = UiState(text = text)
@@ -26,7 +30,7 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
             try {
                 val response = ApiRepository().getAllPokemon()
                 for (pokemon in response.results) {
-                    getPokemon(pokemon.url)
+                    addFavoritePokemon(pokemon.url)
                 }
                 _uiState.value = UiState(pokemonList = response)
             } catch (e: Exception) {
@@ -35,12 +39,23 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
         }
     }
 
-    suspend fun getPokemon(url: String) {
+    fun addFavoritePokemon(url: String) {
         viewModelScope.launch {
             try {
                 val id = url.split("/")[6].toInt()
                 val response = ApiRepository().getPokemon(id)
                 pokemonRepository.insertPokemon(response)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun fetchPokemon(id: Int) {
+        viewModelScope.launch {
+            try {
+                val response = ApiRepository().getPokemon(id)
+                _pokemon.value = response
             } catch (e: Exception) {
                 e.printStackTrace()
             }
