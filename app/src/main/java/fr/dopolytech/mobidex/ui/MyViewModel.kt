@@ -52,6 +52,18 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
         }
     }
 
+    fun updatePokemonList(offset: Int, limit: Int = 20) {
+        viewModelScope.launch {
+            try {
+                val response = ApiRepository().getPokemonList(offset, limit)
+                response.results = _uiState.value.pokemonList.results + response.results
+                _uiState.value = UiState(pokemonList = response)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     fun fetchPokemon(id: Int) {
         _pokemon.value = null
         viewModelScope.launch {
