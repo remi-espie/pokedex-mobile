@@ -9,6 +9,7 @@ import okhttp3.MediaType.Companion.toMediaType
 
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 private const val BASE_URL = "https://pokeapi.co/api/v2/"
 
@@ -24,6 +25,9 @@ interface ApiService {
 
     @GET("pokemon/{id}")
     suspend fun getPokemon(@Path("id") id: Int): Pokemon
+
+    @GET("pokemon")
+    suspend fun getPokemonList(@Query("offset") offset: Int, @Query("limit") limit: Int): PokemonList
 }
 
 object Api {
@@ -39,5 +43,9 @@ class ApiRepository() : ApiService {
 
     override suspend fun getPokemon(id: Int): Pokemon {
         return Api.service.getPokemon(id)
+    }
+
+    override suspend fun getPokemonList(offset: Int, limit: Int): PokemonList {
+        return Api.service.getPokemonList(offset, limit)
     }
 }
