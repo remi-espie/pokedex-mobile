@@ -49,7 +49,7 @@ fun MainNav(viewModel: MyViewModel, navController: NavHostController = rememberN
                   arguments = listOf(navArgument("pokemonId") { type = NavType.StringType })) {
                       navBackStackEntry ->
                     val pokemonId = navBackStackEntry.arguments?.getString("pokemonId")!!
-                    PokemonDetails(viewModel = viewModel, pokemon = pokemonId)
+                    PokemonDetails(viewModel = viewModel, pokemonId = pokemonId)
                   }
             }
       }
