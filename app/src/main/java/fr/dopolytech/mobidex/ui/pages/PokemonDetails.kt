@@ -9,6 +9,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.layout.ContentScale
@@ -21,9 +23,12 @@ fun PokemonDetails(
     viewModel: MyViewModel,
     pokemonId: String,
 ) {
-    val pokemonIdInt = pokemonId.toInt()
-    LaunchedEffect(pokemonIdInt) { viewModel.fetchPokemon(pokemonIdInt) }
-    val pokemon = viewModel.pokemon.collectAsState().value
+  val pokemonIdInt = pokemonId.toInt()
+  LaunchedEffect(pokemonIdInt) { viewModel.fetchPokemon(pokemonIdInt) }
+  val pokemon = viewModel.pokemon.collectAsState().value
+  val sprite = remember { mutableStateOf(pokemon?.sprites?.frontDefault) }
+
+  val sensor = viewModel.sensor.collectAsState().value
 
   Column {
     if (pokemon == null) {
@@ -34,13 +39,15 @@ fun PokemonDetails(
       )
     } else {
       Text(text = "Pokemon:${pokemon.name}")
-        AsyncImage(
-            model = pokemon.sprites.frontDefault,
-            contentDescription = "${pokemon.name} default sprite",
-            contentScale = ContentScale.Fit,
-            filterQuality = FilterQuality.High,
-            modifier = Modifier.width(200.dp).height(200.dp),
-        )
+      AsyncImage(
+          model = sprite.value,
+          contentDescription = "${pokemon.name} default sprite",
+          contentScale = ContentScale.Fit,
+          filterQuality = FilterQuality.High,
+          modifier = Modifier
+              .width(200.dp)
+              .height(200.dp),
+      )
     }
   }
 }

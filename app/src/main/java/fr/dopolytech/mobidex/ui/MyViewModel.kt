@@ -1,10 +1,15 @@
 package fr.dopolytech.mobidex.ui
 
+import android.hardware.Sensor
+import android.hardware.SensorManager
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import fr.dopolytech.mobidex.data.PokemonRepository
 import fr.dopolytech.mobidex.network.ApiRepository
 import fr.dopolytech.mobidex.type.Pokemon
+import fr.dopolytech.mobidex.type.RotationSensorType
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,6 +21,9 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
 
     private val _pokemon = MutableStateFlow<Pokemon?>(null)
     val pokemon: StateFlow<Pokemon?> = _pokemon.asStateFlow()
+
+    private val _sensor = MutableStateFlow(RotationSensorType())
+    val sensor: StateFlow<RotationSensorType> = _sensor.asStateFlow()
 
     init {
         getAllPokemon()
@@ -54,5 +62,9 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
                 e.printStackTrace()
             }
         }
+    }
+
+    fun setRotation(pitch: Float, roll: Float) {
+        _sensor.value = RotationSensorType(pitch, roll)
     }
 }
