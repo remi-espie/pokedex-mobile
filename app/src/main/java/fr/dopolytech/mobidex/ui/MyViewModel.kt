@@ -17,10 +17,6 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
     private val _pokemon = MutableStateFlow<Pokemon?>(null)
     val pokemon: StateFlow<Pokemon?> = _pokemon.asStateFlow()
 
-    fun updateText(text: String) {
-        _uiState.value = UiState(text = text)
-    }
-
     init {
         getAllPokemon()
     }
@@ -29,9 +25,6 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
         viewModelScope.launch {
             try {
                 val response = ApiRepository().getAllPokemon()
-                for (pokemon in response.results) {
-                    addFavoritePokemon(pokemon.url)
-                }
                 _uiState.value = UiState(pokemonList = response)
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -52,6 +45,7 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
     }
 
     fun fetchPokemon(id: Int) {
+        _pokemon.value = null
         viewModelScope.launch {
             try {
                 val response = ApiRepository().getPokemon(id)
