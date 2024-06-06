@@ -29,12 +29,11 @@ fun PokemonDetails(
   val pokemon = viewModel.pokemon.collectAsState().value
 
   val sensor = viewModel.sensor.collectAsState().value
-  val initPitch = remember { sensor.pitch }
-  val initRoll = remember { sensor.roll }
+  val initAzimuth = remember { sensor.azimuth }
 
   val sprite = remember { mutableStateOf(pokemon?.sprites?.frontDefault) }
 
-  if (abs(initPitch - sensor.pitch) > 25 || abs(initRoll - sensor.roll) > 25) {
+  if (abs(initAzimuth - sensor.azimuth) > 22.5) {
     sprite.value = pokemon?.sprites?.backDefault
   } else {
     sprite.value = pokemon?.sprites?.frontDefault

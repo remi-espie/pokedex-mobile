@@ -1,7 +1,5 @@
 package fr.dopolytech.mobidex
 
-import android.hardware.Sensor
-import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,9 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.content.ContextCompat
 import fr.dopolytech.mobidex.data.AppContainer
 import fr.dopolytech.mobidex.data.AppDataContainer
 import fr.dopolytech.mobidex.navigator.MainNav
@@ -55,8 +51,8 @@ class MainActivity : ComponentActivity(), RotationSensor.Listener {
         rotationSensor.stopListening()
     }
 
-    override fun onOrientationChanged(pitch: Float, roll: Float) {
-        viewModel.setRotation(pitch, roll)
+    override fun onOrientationChanged(pitch: Float, roll: Float, azimuth: Float) {
+        viewModel.setRotation(pitch, roll, azimuth)
     }
 }
 

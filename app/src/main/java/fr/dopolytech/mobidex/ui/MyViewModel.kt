@@ -1,9 +1,5 @@
 package fr.dopolytech.mobidex.ui
 
-import android.hardware.Sensor
-import android.hardware.SensorManager
-import androidx.compose.ui.platform.LocalContext
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import fr.dopolytech.mobidex.data.PokemonRepository
@@ -76,7 +72,7 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
         }
     }
 
-    fun setRotation(pitch: Float, roll: Float) {
-        _sensor.value = RotationSensorType(pitch, roll)
+    fun setRotation(pitch: Float, roll: Float, azimuth: Float) {
+        _sensor.value = RotationSensorType(pitch, roll, azimuth)
     }
 }

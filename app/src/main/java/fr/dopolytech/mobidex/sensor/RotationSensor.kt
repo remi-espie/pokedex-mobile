@@ -15,7 +15,7 @@ private const val SENSOR_DELAY_MICROS = 16 * 1000 // 16ms
 class RotationSensor(activity: Activity) : SensorEventListener {
 
     interface Listener {
-        fun onOrientationChanged(pitch: Float, roll: Float)
+        fun onOrientationChanged(pitch: Float, roll: Float, azimuth: Float)
     }
 
     private val mWindowManager: WindowManager = activity.window.windowManager
@@ -83,8 +83,9 @@ class RotationSensor(activity: Activity) : SensorEventListener {
         // Convert radians to degrees
         val pitch = orientation[1] * -57
         val roll = orientation[2] * -57
+        val azimuth = orientation[0] * -57
 
-        mListener?.onOrientationChanged(pitch, roll)
+        mListener?.onOrientationChanged(pitch, roll, azimuth)
     }
 }
 
