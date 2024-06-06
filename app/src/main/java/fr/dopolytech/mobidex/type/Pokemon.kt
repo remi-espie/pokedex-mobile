@@ -55,8 +55,8 @@ data class AbilityDetail(
 
 @Serializable
 data class Cries(
-    var latest: String = "",
-    var legacy: String = ""
+    var latest: String? = "",
+    var legacy: String? = ""
 )
 
 @Serializable
@@ -237,39 +237,38 @@ data class GenerationI(
     @SerialName("red-blue")
     var redBlue: RedBlue = RedBlue(),
     var yellow: Yellow = Yellow()
-
 )
 
 @Serializable
 data class RedBlue(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_gray")
-    var backGray: String = "",
+    var backGray: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_gray")
-    var frontGray: String = "",
+    var frontGray: String? = "",
     @SerialName("front_transparent")
-    var frontTransparent: String = "",
+    var frontTransparent: String? = "",
     @SerialName("back_transparent")
-    var backTransparent: String = ""
+    var backTransparent: String? = ""
 )
 
 @Serializable
 data class Yellow(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_gray")
-    var backGray: String = "",
+    var backGray: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_gray")
-    var frontGray: String = "",
+    var frontGray: String? = "",
     @SerialName("front_transparent")
-    var frontTransparent: String = "",
+    var frontTransparent: String? = "",
     @SerialName("back_transparent")
-    var backTransparent: String = ""
+    var backTransparent: String? = ""
 )
 
 @Serializable
@@ -285,49 +284,49 @@ data class GenerationII(
 @Serializable
 data class Crystal(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_shiny_transparent")
-    var frontShinyTransparent: String = "",
+    var frontShinyTransparent: String? = "",
     @SerialName("back_shiny_transparent")
-    var backShinyTransparent: String = "",
+    var backShinyTransparent: String? = "",
     @SerialName("front_transparent")
-    var frontTransparent: String = "",
+    var frontTransparent: String? = "",
     @SerialName("back_transparent")
-    var backTransparent: String = ""
+    var backTransparent: String? = ""
 )
 
 @Serializable
 data class Gold(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_transparent")
-    var frontTransparent: String = "",
+    var frontTransparent: String? = "",
 )
 
 @Serializable
 data class Silver(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_transparent")
-    var frontTransparent: String = "",
+    var frontTransparent: String? = "",
 )
 
 @Serializable
@@ -343,33 +342,33 @@ data class GenerationIII(
 @Serializable
 data class Emerald(
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = ""
+    var frontShiny: String? = ""
 )
 
 @Serializable
 data class FireRedLeafGreen(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = ""
+    var frontShiny: String? = ""
 )
 
 @Serializable
 data class RubySapphire(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = ""
+    var frontShiny: String? = ""
 )
 
 @Serializable
@@ -385,19 +384,19 @@ data class GenerationIV(
 @Serializable
 data class DiamondPearl(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_female")
     var backFemale: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("back_shiny_female")
     var backShinyFemale: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_female")
     var frontFemale: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_shiny_female")
     var frontShinyFemale: String? = ""
 )
@@ -405,19 +404,19 @@ data class DiamondPearl(
 @Serializable
 data class HeartGoldSoulSilver(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_female")
     var backFemale: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("back_shiny_female")
     var backShinyFemale: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_female")
     var frontFemale: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_shiny_female")
     var frontShinyFemale: String? = ""
 )
@@ -425,19 +424,19 @@ data class HeartGoldSoulSilver(
 @Serializable
 data class Platinum(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_female")
     var backFemale: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("back_shiny_female")
     var backShinyFemale: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_female")
     var frontFemale: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_shiny_female")
     var frontShinyFemale: String? = ""
 )
@@ -453,19 +452,19 @@ data class BlackWhite(
     @SerialName("animated")
     var animated: Animated = Animated(),
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_female")
     var backFemale: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("back_shiny_female")
     var backShinyFemale: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_female")
     var frontFemale: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_shiny_female")
     var frontShinyFemale: String? = ""
 )
@@ -473,19 +472,19 @@ data class BlackWhite(
 @Serializable
 data class Animated(
     @SerialName("back_default")
-    var backDefault: String = "",
+    var backDefault: String? = "",
     @SerialName("back_female")
     var backFemale: String? = "",
     @SerialName("back_shiny")
-    var backShiny: String = "",
+    var backShiny: String? = "",
     @SerialName("back_shiny_female")
     var backShinyFemale: String? = "",
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_female")
     var frontFemale: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_shiny_female")
     var frontShinyFemale: String? = ""
 )
@@ -501,9 +500,9 @@ data class GenerationVI(
 @Serializable
 data class OmegaRubyAlphaSapphire(
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_female")
     var frontFemale: String? = "",
     @SerialName("front_shiny_female")
@@ -513,9 +512,9 @@ data class OmegaRubyAlphaSapphire(
 @Serializable
 data class XY(
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_female")
     var frontFemale: String? = "",
     @SerialName("front_shiny_female")
@@ -533,7 +532,7 @@ data class GenerationVII(
 @Serializable
 data class Icons(
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_female")
     var frontFemale: String? = "",
 )
@@ -541,9 +540,9 @@ data class Icons(
 @Serializable
 data class UltraSunUltraMoon(
     @SerialName("front_default")
-    var frontDefault: String = "",
+    var frontDefault: String? = "",
     @SerialName("front_shiny")
-    var frontShiny: String = "",
+    var frontShiny: String? = "",
     @SerialName("front_female")
     var frontFemale: String? = "",
     @SerialName("front_shiny_female")
