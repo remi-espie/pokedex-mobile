@@ -17,6 +17,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import fr.dopolytech.mobidex.ui.theme.PokemonBackground
 
 
 @Composable
@@ -63,34 +64,39 @@ private fun TopBannerTemplate(height: Float, screenWidth: Float) {
             .height(height = heightToDp)
     ) {
         Canvas(modifier = Modifier, onDraw = {
+            // -- BASE RECTANGLES --
+
             // red rectangle
             drawRect(
-                color = Color(0xFFE42828),
+                color = PokemonBackground,
                 size = Size(screenWidth + 1, height)
             )
 
             // black border
             val border = height / 8
             drawRect(
-                color = Color(0xFF000000),
+                color = Color.Black,
                 topLeft = Offset(0f, height - border),
                 size = Size(screenWidth + 1, border)
             )
 
+
+            // -- CENTERED HALF-MOON "chm" --
+
             // circle variables
-            val size = height
-            val x = screenWidth / 2 - height / 2
-            val y = height / 2
-            val offset = height / 3
+            val chmSize = height
+            val chmX = screenWidth / 2 - height / 2
+            val chmY = height / 2
+            val chmOffset = height / 3
 
             // outer black half-moon
             drawArc(
-                color = Color(0xFF000000),
+                color = Color.Black,
                 startAngle = 180f,
                 sweepAngle = 180f,
                 useCenter = true,
-                topLeft = Offset(x - offset / 2, y - offset / 2),
-                size = Size(size + offset, size + offset)
+                topLeft = Offset(chmX - chmOffset / 2, chmY - chmOffset / 2),
+                size = Size(chmSize + chmOffset, chmSize + chmOffset)
             )
 
             // inner white half-moon
@@ -99,8 +105,62 @@ private fun TopBannerTemplate(height: Float, screenWidth: Float) {
                 startAngle = 180f,
                 sweepAngle = 180f,
                 useCenter = true,
-                topLeft = Offset(x, y + 2),
-                size = Size(size, size)
+                topLeft = Offset(chmX, chmY + 2),
+                size = Size(chmSize, chmSize)
+            )
+
+
+            val cornersQmSize = chmSize / 1.5f
+            val cornersQmOffset = chmOffset / 2f
+
+            // -- TOP-LEFT QUARTER-MOON --
+
+            drawArc(
+                color = Color.Black,
+                startAngle = 0f,
+                sweepAngle = 90f,
+                useCenter = true,
+                topLeft = Offset(
+                    -cornersQmSize / 2 - cornersQmOffset / 2,
+                    -cornersQmSize / 2 - cornersQmOffset / 2
+                ),
+                size = Size(cornersQmSize + cornersQmOffset, cornersQmSize + cornersQmOffset)
+            )
+
+            drawArc(
+                color = PokemonBackground,
+                startAngle = 0f,
+                sweepAngle = 90f,
+                useCenter = true,
+                topLeft = Offset(-cornersQmSize / 2, -cornersQmSize / 2),
+                size = Size(cornersQmSize, cornersQmSize)
+            )
+
+
+            // -- TOP-RIGHT QUARTER-MOON --
+
+            drawArc(
+                color = Color.Black,
+                startAngle = 90f,
+                sweepAngle = 90f,
+                useCenter = true,
+                topLeft = Offset(
+                    screenWidth - cornersQmSize / 2 - cornersQmOffset / 2,
+                    -cornersQmSize / 2 - cornersQmOffset / 2
+                ),
+                size = Size(cornersQmSize + cornersQmOffset, cornersQmSize + cornersQmOffset)
+            )
+
+            drawArc(
+                color = PokemonBackground,
+                startAngle = 90f,
+                sweepAngle = 90f,
+                useCenter = true,
+                topLeft = Offset(
+                    screenWidth - cornersQmSize / 2,
+                    -cornersQmSize / 2
+                ),
+                size = Size(cornersQmSize, cornersQmSize)
             )
         })
     }
