@@ -25,13 +25,18 @@ import fr.dopolytech.mobidex.ui.theme.PokemonBackground
 fun BannerWrapper(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     val configuration = LocalConfiguration.current
 
-    val bannerHeight = with(LocalDensity.current) { (configuration.screenHeightDp.dp).toPx() / 10 }
-    val contentHeight = configuration.screenHeightDp.dp * 0.9f
+    val percentage = 0.1f
+    val spacing = 15.dp
+
+    val bannerHeight = with(LocalDensity.current) {
+        (configuration.screenHeightDp.dp).toPx() * percentage
+    }
+    val contentHeight = configuration.screenHeightDp.dp * (1f - 2 * percentage) - (spacing * 2)
 
     val screenWidth = with(LocalDensity.current) { configuration.screenWidthDp.dp.toPx() }
 
     Surface {
-        Column(verticalArrangement = Arrangement.spacedBy(15.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(spacing)) {
             TopBannerTemplate(bannerHeight, screenWidth)
 
             // main content
@@ -188,7 +193,6 @@ private fun BottomBannerTemplate(height: Float, screenWidth: Float) {
             // red rectangle
             drawRect(
                 color = PokemonBackground,
-                topLeft = Offset(0f, -height),
                 size = Size(screenWidth + 1, height)
             )
 
@@ -196,7 +200,7 @@ private fun BottomBannerTemplate(height: Float, screenWidth: Float) {
             val border = height / 8
             drawRect(
                 color = Color.Black,
-                topLeft = Offset(0f, -border),
+                topLeft = Offset(0f, 0f),
                 size = Size(screenWidth + 1, border)
             )
 
@@ -206,7 +210,7 @@ private fun BottomBannerTemplate(height: Float, screenWidth: Float) {
             // circle variables
             val chmSize = height
             val chmX = screenWidth / 2 - height / 2
-            val chmY = height / 2
+            val chmY = -height / 2
             val chmOffset = height / 3
 
             // outer black half-moon
@@ -225,7 +229,7 @@ private fun BottomBannerTemplate(height: Float, screenWidth: Float) {
                 startAngle = 0f,
                 sweepAngle = 180f,
                 useCenter = true,
-                topLeft = Offset(chmX, chmY + 2),
+                topLeft = Offset(chmX, chmY - 2),
                 size = Size(chmSize, chmSize)
             )
 
@@ -242,7 +246,7 @@ private fun BottomBannerTemplate(height: Float, screenWidth: Float) {
                 useCenter = true,
                 topLeft = Offset(
                     -cornersQmSize / 2 - cornersQmOffset / 2,
-                    -cornersQmSize / 2 - cornersQmOffset / 2
+                    cornersQmSize - cornersQmOffset / 2
                 ),
                 size = Size(cornersQmSize + cornersQmOffset, cornersQmSize + cornersQmOffset)
             )
@@ -252,7 +256,10 @@ private fun BottomBannerTemplate(height: Float, screenWidth: Float) {
                 startAngle = 270f,
                 sweepAngle = 90f,
                 useCenter = true,
-                topLeft = Offset(-cornersQmSize / 2, -cornersQmSize / 2),
+                topLeft = Offset(
+                    -cornersQmSize / 2,
+                    cornersQmSize
+                ),
                 size = Size(cornersQmSize, cornersQmSize)
             )
 
@@ -266,7 +273,7 @@ private fun BottomBannerTemplate(height: Float, screenWidth: Float) {
                 useCenter = true,
                 topLeft = Offset(
                     screenWidth - cornersQmSize / 2 - cornersQmOffset / 2,
-                    -cornersQmSize / 2 - cornersQmOffset / 2
+                    cornersQmSize - cornersQmOffset / 2
                 ),
                 size = Size(cornersQmSize + cornersQmOffset, cornersQmSize + cornersQmOffset)
             )
@@ -278,7 +285,7 @@ private fun BottomBannerTemplate(height: Float, screenWidth: Float) {
                 useCenter = true,
                 topLeft = Offset(
                     screenWidth - cornersQmSize / 2,
-                    -cornersQmSize / 2
+                    cornersQmSize
                 ),
                 size = Size(cornersQmSize, cornersQmSize)
             )
