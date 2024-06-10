@@ -1,6 +1,7 @@
 package fr.dopolytech.mobidex.ui.design
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,6 +25,7 @@ import fr.dopolytech.mobidex.ui.theme.PokemonBackground
 @Composable
 fun BannerWrapper(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     val configuration = LocalConfiguration.current
+    val backgroundColor = MaterialTheme.colorScheme.background
 
     val percentage = 0.1f
     val spacing = 15.dp
@@ -35,12 +37,17 @@ fun BannerWrapper(modifier: Modifier = Modifier, content: @Composable () -> Unit
 
     val screenWidth = with(LocalDensity.current) { configuration.screenWidthDp.dp.toPx() }
 
-    Surface {
-        Column(verticalArrangement = Arrangement.spacedBy(spacing)) {
+    Surface(modifier = Modifier.background(color = backgroundColor)) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(spacing),
+            modifier = Modifier.background(color = backgroundColor)
+        ) {
             TopBannerTemplate(bannerHeight, screenWidth)
 
             // main content
-            Surface(modifier = Modifier.size(contentHeight)) {
+            Surface(modifier = Modifier
+                .size(contentHeight)
+                .background(color = backgroundColor)) {
                 Layout(
                     modifier = modifier,
                     content = content,
