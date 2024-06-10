@@ -16,7 +16,7 @@ import androidx.navigation.navArgument
 import fr.dopolytech.mobidex.ui.MyViewModel
 import fr.dopolytech.mobidex.ui.design.BannerWrapper
 import fr.dopolytech.mobidex.ui.pages.PokemonDetailsPage
-import fr.dopolytech.mobidex.ui.pages.Screen
+import fr.dopolytech.mobidex.ui.pages.PokemonListPage
 
 @Composable
 fun MainNav(viewModel: MyViewModel, navController: NavHostController = rememberNavController()) {
@@ -46,7 +46,7 @@ fun MainNav(viewModel: MyViewModel, navController: NavHostController = rememberN
                     .padding(innerPadding)
             ) {
                 composable(route = navScreen.StartPage.name) {
-                    Screen(viewModel = viewModel, navController)
+                    PokemonListPage(viewModel = viewModel, navController)
                 }
                 composable(
                     route = navScreen.DetailPage.name + "/{pokemonId}",

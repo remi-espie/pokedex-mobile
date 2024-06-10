@@ -20,7 +20,7 @@ import fr.dopolytech.mobidex.ui.MyViewModel
 import fr.dopolytech.mobidex.ui.components.ListedPokemonCard
 
 @Composable
-fun Screen(viewModel: MyViewModel, navController: NavHostController) {
+fun PokemonListPage(viewModel: MyViewModel, navController: NavHostController) {
     val uiState by viewModel.uiState.collectAsState()
     val listState = rememberLazyGridState()
 
