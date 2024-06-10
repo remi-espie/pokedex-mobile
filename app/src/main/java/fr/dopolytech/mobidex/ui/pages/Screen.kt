@@ -25,21 +25,24 @@ fun Screen(viewModel: MyViewModel, navController: NavHostController) {
     val listState = rememberLazyGridState()
 
     Column(modifier = Modifier.height(100.dp)) {
-        Text(text = "Pokemon count:" + uiState.pokemonList.count.toString())
+        Text(
+            text = "Pokemon count:" + uiState.pokemonList.count.toString()
+        )
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
             state = listState,
-            ) {
-                itemsIndexed(uiState.pokemonList.results) { index, pokemon ->
-                    ListedPokemonCard(pokemon = pokemon, navController = navController)
-                    if (index == uiState.pokemonList.results.size - 1) {
-                        val offset = uiState.pokemonList.next?.toUri()?.getQueryParameter("offset")?.toInt() ?: 0
-                        viewModel.updatePokemonList(offset + 20)
-                    }
+        ) {
+            itemsIndexed(uiState.pokemonList.results) { index, pokemon ->
+                ListedPokemonCard(pokemon = pokemon, navController = navController)
+                if (index == uiState.pokemonList.results.size - 1) {
+                    val offset =
+                        uiState.pokemonList.next?.toUri()?.getQueryParameter("offset")?.toInt() ?: 0
+                    viewModel.updatePokemonList(offset + 20)
                 }
+            }
         }
     }
 }
