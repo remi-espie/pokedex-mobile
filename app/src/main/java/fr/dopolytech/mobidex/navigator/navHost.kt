@@ -14,7 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import fr.dopolytech.mobidex.ui.MyViewModel
-import fr.dopolytech.mobidex.ui.pages.PokemonDetails
+import fr.dopolytech.mobidex.ui.pages.PokemonDetailsPage
 import fr.dopolytech.mobidex.ui.pages.Screen
 
 @Composable
@@ -49,7 +49,7 @@ fun MainNav(viewModel: MyViewModel, navController: NavHostController = rememberN
                   arguments = listOf(navArgument("pokemonId") { type = NavType.StringType })) {
                       navBackStackEntry ->
                     val pokemonId = navBackStackEntry.arguments?.getString("pokemonId")!!
-                    PokemonDetails(viewModel = viewModel, pokemonId = pokemonId)
+                    PokemonDetailsPage(viewModel = viewModel, pokemonId = pokemonId)
                   }
             }
       }

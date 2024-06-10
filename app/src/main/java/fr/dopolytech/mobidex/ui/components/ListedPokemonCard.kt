@@ -7,10 +7,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import fr.dopolytech.mobidex.navigator.navScreen
 import fr.dopolytech.mobidex.type.ListedPokemon
+import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 
 @Composable
 fun ListedPokemonCard(
@@ -31,4 +34,15 @@ fun ListedPokemonCard(
             Modifier.padding(40.dp)
         ) { Text("name: ${pokemon.name}") }
       }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ListedPokemonCardPreview() {
+    val pokemon = ListedPokemon("test", "https://example.com")
+    MobidexTheme {
+        Surface(modifier = Modifier.padding(15.dp)) {
+            ListedPokemonCard(pokemon = pokemon, navController = rememberNavController())
+        }
+    }
 }
