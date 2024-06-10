@@ -32,14 +32,14 @@ fun ListedPokemonCard(
       }) {
         Surface(modifier =
             Modifier.padding(40.dp)
-        ) { Text("name: ${pokemon.name}") }
+        ) { Text("${pokemon.name} (#${pokemon.url.split("/")[pokemon.url.split("/").size-2]})") }
       }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ListedPokemonCardPreview() {
-    val pokemon = ListedPokemon("test", "https://example.com")
+    val pokemon = ListedPokemon("test", "https://pokeapi.co/api/v2/pokemon/1/")
     MobidexTheme {
         Surface(modifier = Modifier.padding(15.dp)) {
             ListedPokemonCard(pokemon = pokemon, navController = rememberNavController())
