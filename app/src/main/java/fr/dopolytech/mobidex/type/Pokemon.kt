@@ -26,9 +26,9 @@ data class Pokemon(
     var locationAreaEncounters: String = "",
     var moves: List<Move> = listOf(),
     @SerialName("past_abilities")
-    var pastAbilities: List<Ability> = listOf(),
+    var pastAbilities: List<ListOfAbilities> = listOf(),
     @SerialName("past_types")
-    var pastTypes: List<Type> = listOf(),
+    var pastTypes: List<Type>?,
     var name: String = "",
     var order: Int = 0,
     var species: Species = Species(),
@@ -36,6 +36,18 @@ data class Pokemon(
     var stats: List<Stat> = listOf(),
     var types: List<Type> = listOf(),
     var weight: Int = 0
+)
+
+@Serializable
+data class ListOfAbilities(
+    var abilities: List<Ability> = listOf(),
+    var generation: Generation = Generation()
+)
+
+@Serializable
+data class Generation(
+    var name: String = "",
+    var url: String = ""
 )
 
 @Serializable

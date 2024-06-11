@@ -5,6 +5,18 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class Converters {
+
+    @TypeConverter
+    fun fromListOfAbilities(value: List<ListOfAbilities>): String {
+        return Json.encodeToString(value)
+    }
+
+    @TypeConverter
+    fun toListOfAbilities(value: String): List<ListOfAbilities> {
+        return Json.decodeFromString(value)
+    }
+
+
     @TypeConverter
     fun fromAbilityList(value: List<Ability>): String {
         return Json.encodeToString(value)
