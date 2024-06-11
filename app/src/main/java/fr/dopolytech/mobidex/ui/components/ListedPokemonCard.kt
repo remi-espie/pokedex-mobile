@@ -17,11 +17,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import fr.dopolytech.mobidex.navigator.navScreen
-import fr.dopolytech.mobidex.type.ListedPokemon
+import fr.dopolytech.mobidex.type.SimplifiedPokemon
 import fr.dopolytech.mobidex.ui.theme.MobidexTheme
 
 @Composable
-fun ListedPokemonCard(pokemon: ListedPokemon, navController: NavHostController) {
+fun ListedPokemonCard(pokemon: SimplifiedPokemon, navController: NavHostController) {
   val pokemonId =
       if (pokemon.url.last() == '/') {
         pokemon.url.dropLast(1).split("/").last()
@@ -49,7 +49,7 @@ fun ListedPokemonCard(pokemon: ListedPokemon, navController: NavHostController) 
 @Preview(showBackground = true)
 @Composable
 fun ListedPokemonCardPreview() {
-  val pokemon = ListedPokemon("test", "https://pokeapi.co/api/v2/pokemon/1/")
+  val pokemon = SimplifiedPokemon("test", "https://pokeapi.co/api/v2/pokemon/1/")
   MobidexTheme {
     Surface(modifier = Modifier.padding(15.dp)) {
       ListedPokemonCard(pokemon = pokemon, navController = rememberNavController())

@@ -7,11 +7,11 @@ data class PokemonList(
     var count: Int = 0,
     var next: String? = null,
     var previous: String? = null,
-    var results: List<ListedPokemon> = listOf()
+    var results: List<SimplifiedPokemon> = listOf()
 )
 
 @Serializable
-data class ListedPokemon(
+data class SimplifiedPokemon(
     var name: String = "",
     var url: String = ""
 )

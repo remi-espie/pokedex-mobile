@@ -144,9 +144,3 @@ data class Varieties(
     @SerialName("is_default") var isDefault: Boolean? = null,
     var pokemon: SimplifiedPokemon? = SimplifiedPokemon()
 )
-
-@Serializable
-data class SimplifiedPokemon(
-    var name: String? = null,
-    var url: String? = null
-)
