@@ -28,7 +28,7 @@ data class Pokemon(
     @SerialName("past_abilities")
     var pastAbilities: List<ListOfAbilities> = listOf(),
     @SerialName("past_types")
-    var pastTypes: List<Type>?,
+    var pastTypes: List<ListOfTypes> = listOf(),
     var name: String = "",
     var order: Int = 0,
     var species: Species = Species(),
@@ -36,6 +36,12 @@ data class Pokemon(
     var stats: List<Stat> = listOf(),
     var types: List<Type> = listOf(),
     var weight: Int = 0
+)
+
+@Serializable
+data class ListOfTypes(
+    var types: List<Type> = listOf(),
+    var generation: Generation = Generation()
 )
 
 @Serializable
