@@ -32,23 +32,25 @@ import coil.compose.AsyncImage
 import fr.dopolytech.mobidex.type.Pokemon
 
 @Composable
-fun PokemonDetails(pokemon: Pokemon) {
+fun PokemonDetails(pokemon: Pokemon, sprite: String? = null) {
     Column(
         modifier = Modifier.fillMaxSize().padding(25.dp, 35.dp),
         verticalArrangement = Arrangement.spacedBy(35.dp)
     ) {
-        DetailsCard(pokemon = pokemon)
+        DetailsCard(pokemon = pokemon, sprite = sprite)
         StatsCard(pokemon = pokemon)
     }
 }
 
 @Composable
-private fun DetailsCard(pokemon: Pokemon) {
+private fun DetailsCard(pokemon: Pokemon, sprite: String? = null) {
+
+
     Card(modifier = Modifier.fillMaxWidth()) {
         Row {
             // Picture
             AsyncImage(
-                model = pokemon.sprites.frontDefault,
+                model = sprite,
                 contentDescription = "${pokemon.name} default sprite",
                 contentScale = ContentScale.Fit,
                 filterQuality = FilterQuality.High,
