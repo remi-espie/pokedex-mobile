@@ -3,6 +3,7 @@ package fr.dopolytech.mobidex.network
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import fr.dopolytech.mobidex.type.Pokemon
 import fr.dopolytech.mobidex.type.PokemonList
+import fr.dopolytech.mobidex.type.PokemonSpecy
 import retrofit2.Retrofit
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -28,6 +29,9 @@ interface ApiService {
 
     @GET("pokemon")
     suspend fun getPokemonList(@Query("offset") offset: Int, @Query("limit") limit: Int): PokemonList
+
+    @GET("pokemon-species/{id}")
+    suspend fun getPokemonSpecy(@Path("id") id: Int): PokemonSpecy
 }
 
 object Api {
@@ -47,5 +51,9 @@ class ApiRepository() : ApiService {
 
     override suspend fun getPokemonList(offset: Int, limit: Int): PokemonList {
         return Api.service.getPokemonList(offset, limit)
+    }
+
+    override suspend fun getPokemonSpecy(id: Int): PokemonSpecy {
+        return Api.service.getPokemonSpecy(id)
     }
 }

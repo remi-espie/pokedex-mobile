@@ -25,7 +25,9 @@ fun PokemonDetailsPage(
 ) {
     val pokemonIdInt = pokemonId.toInt()
     LaunchedEffect(pokemonIdInt) { viewModel.fetchPokemon(pokemonIdInt) }
+    LaunchedEffect(pokemonIdInt) { viewModel.fetchPokemonSpecy(pokemonIdInt) }
     val pokemon = viewModel.pokemon.collectAsState().value
+    val pokemonSpecy = viewModel.pokemonSpecy.collectAsState().value
 
     val sensor = viewModel.sensor.collectAsState().value
     val initAzimuth = remember { sensor.azimuth }

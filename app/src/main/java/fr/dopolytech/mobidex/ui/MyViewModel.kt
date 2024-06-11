@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import fr.dopolytech.mobidex.data.PokemonRepository
 import fr.dopolytech.mobidex.network.ApiRepository
 import fr.dopolytech.mobidex.type.Pokemon
+import fr.dopolytech.mobidex.type.PokemonSpecy
 import fr.dopolytech.mobidex.type.RotationSensorType
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,6 +18,9 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
 
     private val _pokemon = MutableStateFlow<Pokemon?>(null)
     val pokemon: StateFlow<Pokemon?> = _pokemon.asStateFlow()
+
+    private val _pokemonSpecy = MutableStateFlow<PokemonSpecy?>(null)
+    val pokemonSpecy: StateFlow<PokemonSpecy?> = _pokemonSpecy.asStateFlow()
 
     private val _sensor = MutableStateFlow(RotationSensorType())
     val sensor: StateFlow<RotationSensorType> = _sensor.asStateFlow()
@@ -66,6 +70,18 @@ class MyViewModel(private val pokemonRepository: PokemonRepository) : ViewModel(
             try {
                 val response = ApiRepository().getPokemon(id)
                 _pokemon.value = response
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun fetchPokemonSpecy(id: Int) {
+        _pokemonSpecy.value = null
+        viewModelScope.launch {
+            try {
+                val response = ApiRepository().getPokemonSpecy(id)
+                _pokemonSpecy.value = response
             } catch (e: Exception) {
                 e.printStackTrace()
             }
